@@ -3,36 +3,20 @@ const usersRouter = require("./routes/users");
 const app = express();
 const port = 3000;
 
-app.post("/bfhl", (req, res) => {
+app.get("/bfhl", (req, res) => {
   const data = req.body;
-  const user_id = "geetansh_jain_15012004";
-  const email = "geetansh0513.be21@chitkara.edu.in";
-  const roll_number = "2110990513 CSE";
-  const is_success = true;
-  const odd_number = data.filter((num) => num % 2 !== 0);
-  const even_number = data.filter((num) => num % 2 === 0);
-  const alphabets = data
-    .filter((chara) => isNan(chara))
-    .map((chara) => chara.toUpperCase());
-  console.log(
-    is_success,
-    user_id,
-    email,
-    roll_number,
-    odd_number,
-    even_number,
-    alphabets,
-  );
-
-  res.send(
-    is_success,
-    user_id,
-    email,
-    roll_number,
-    odd_number,
-    even_number,
-    alphabets,
-  );
+  const user = {
+    user_id: "geetansh_jain_15012004",
+    email: "geetansh0513.be21@chitkara.edu.in",
+    roll_number: "2110990513 CSE",
+    is_success: true,
+    odd_number: data.filter((num) => num % 2 !== 0),
+    even_number: data.filter((num) => num % 2 === 0),
+    alphabets: data
+      .filter((chara) => isNan(chara))
+      .map((chara) => chara.toUpperCase()),
+  };
+  console.log(user);
 });
 
 app.use("/users", usersRouter);
