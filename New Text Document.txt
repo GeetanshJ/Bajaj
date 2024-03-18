@@ -1,0 +1,42 @@
+const express = require("express");
+const usersRouter = require("./routes/users");
+const app = express();
+const port = 3000;
+
+app.post("/bfhl", (req, res) => {
+  const data = req.body;
+  const user_id = "geetansh_jain_15012004";
+  const email = "geetansh0513.be21@chitkara.edu.in";
+  const roll_number = "2110990513 CSE";
+  const is_success = true;
+  const odd_number = data.filter((num) => num % 2 !== 0);
+  const even_number = data.filter((num) => num % 2 === 0);
+  const alphabets = data
+    .filter((chara) => isNan(chara))
+    .map((chara) => chara.toUpperCase());
+  console.log(
+    is_success,
+    user_id,
+    email,
+    roll_number,
+    odd_number,
+    even_number,
+    alphabets,
+  );
+
+  res.send(
+    is_success,
+    user_id,
+    email,
+    roll_number,
+    odd_number,
+    even_number,
+    alphabets,
+  );
+});
+
+app.use("/users", usersRouter);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
